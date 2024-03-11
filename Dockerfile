@@ -15,6 +15,14 @@ RUN npm install
 # Copy the rest of the source code
 COPY . .
 
+COPY package.json package-lock.json ./
+RUN npm install
+
+COPY . .
+
+# Add a start script to package.json
+RUN echo '{"scripts": {"start": "node server.js"}}' > package.json
+
 # Expose port (if necessary)
 EXPOSE 3000
 
