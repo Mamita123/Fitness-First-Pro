@@ -1,7 +1,7 @@
 FROM node
 
 
-COPY server/server.js /app/server.js
+COPY server/server.js /app/app.js
 
 # Set the working directory
 WORKDIR /app
