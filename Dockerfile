@@ -13,7 +13,10 @@ WORKDIR /app/backend
 RUN npm install
 
 # Copy the rest of the source code
-COPY . .
+COPY backend .
+
+# Change the working directory back to /app
+WORKDIR /app
 
 # Add a start script to package.json
 RUN echo '{"scripts": {"start": "node server.js"}}' > package.json
@@ -22,4 +25,4 @@ RUN echo '{"scripts": {"start": "node server.js"}}' > package.json
 EXPOSE 3001
 
 # Runtime command
-CMD ["node", "server.js"]
+CMD ["node", "backend/server.js"]
