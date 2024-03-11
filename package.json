@@ -3,3 +3,12 @@
     "jest": "^29.7.0"
   }
 }
+
+{
+  "scripts": {
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && node server.js",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
+  }
+}
+
