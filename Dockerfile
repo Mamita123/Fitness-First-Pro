@@ -1,7 +1,10 @@
 FROM node
 
+
+COPY server/server.js /app/server.js
+
 # Set the working directory
-WORKDIR /server
+WORKDIR /app
 
 # Copy the package.json and package-lock.json files
 COPY package*.json ./
