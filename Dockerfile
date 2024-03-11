@@ -27,7 +27,7 @@ COPY . .
 RUN echo '{"scripts": {"start": "node server.js"}}' > package.json
 
 # Expose port (if necessary)
-EXPOSE 3000
+EXPOSE 3001
 
 # Runtime command
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
