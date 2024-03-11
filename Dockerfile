@@ -1,14 +1,10 @@
 FROM node
 
-
 # Set the working directory
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files
 COPY package*.json ./
-
-# Delete existing node_modules and package-lock.json
-RUN rm -rf node_modules package-lock.json
 
 # Install backend dependencies
 RUN npm install
@@ -16,13 +12,14 @@ RUN npm install
 # Copy the rest of the source code
 COPY . .
 
-COPY package.json package-lock.json ./
+# Add a start script to a separate package.json
+RUN echo '{"scripts": {"start": "node server.js"}}' > start-package.json
+
+# Install dependencies for the start script
 RUN npm install
 
-COPY . .
-
-# Add a start script to package.json
-RUN echo '{"scripts": {"start": "node server.js"}}' > package.json
+# Rename start-package.json to package.json
+RUN mv start-package.json package.json
 
 # Expose port (if necessary)
 EXPOSE 3001
